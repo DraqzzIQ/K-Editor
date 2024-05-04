@@ -1,14 +1,14 @@
-# Qt Code Editor Widget
-It's a widget for editing/viewing code.
+# K-Editor
+It's a QWidget and QQmlComponent for editing/viewing code.
 
 This project uses a resource named `qcodeeditor_resources.qrc`. The main application
 must not use a resource file with the same name.
 
-(It's not a project from a Qt example.)
+(Project is based on QCodeEditor)
 
 ## Requirements
 0. C++11 featured compiler.
-0. Qt 5.
+0. Qt 6.
 
 ## Abilities
 1. Auto parentheses.
@@ -24,24 +24,32 @@ must not use a resource file with the same name.
 1. Qt Creator styles.
 
 ## Build
+
+Using QtCreator.
+
+1. Clone the repository: `https://github.com/rafal-tarnow/K-Editor.git`
+1. Open QtCreator
+1. From "File" select "Open File or Project", navigate to K-Editor directory, select CMakeLists.txt
+1. Configure project
+1. Build and run
+
 It's a CMake-based library, so it can be used as a submodule (see the example).
 But here are the steps to build it as a static library (for external use for example).
 
-1. Clone the repository: `git clone https://github.com/Megaxela/QCodeEditor`
-1. Go into the repository: `cd QCodeEditor`
+1. Clone the repository: `https://github.com/rafal-tarnow/K-Editor.git`
+1. Go into the repository: `cd K-Editor'
 1. Create a build folder: `mkdir build`
 1. Go into the build folder: `cd build`
 1. Generate a build file for your compiler: `cmake ..`
-    1. If you need to build the example, specify `-DBUILD_EXAMPLE=On` on this step.
 1. Build the library: `cmake --build .`
 
 ## Example
 
-By default, `QCodeEditor` uses the standard QtCreator theme. But you may specify
+By default, `K-Editor` uses the standard QtCreator theme. But you may specify
 your own by parsing it with `QSyntaxStyle`. The example uses [Dracula](https://draculatheme.com) theme.
 (See the example for more.) 
 
-<img src="https://github.com/Megaxela/QCodeEditor/blob/master/example/image/preview.png">
+<img src="https://github.com/rafal-tarnow/K-Editor/blob/master/example/image/preview.png">
 
 ## LICENSE
 
