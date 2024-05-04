@@ -1,7 +1,7 @@
 // Demo
 #include <MainWindow.hpp>
 
-// QCodeEditor
+// K-Editor
 #include <QCodeEditor>
 #include <QGLSLCompleter>
 #include <QLuaCompleter>
@@ -168,7 +168,7 @@ void MainWindow::createWidgets()
 
 void MainWindow::setupWidgets()
 {
-    setWindowTitle("QCodeEditor Demo");
+    setWindowTitle("K-Editor Demo");
 
     // CodeEditor
     m_codeEditor->setPlainText  (m_codeSamples[0].second);
