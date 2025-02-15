@@ -3,6 +3,9 @@
 // Qt
 #include <QTextEdit> // Required for inheritance
 
+#include "../../../../highlighters/QRiscvAsmHighlighter.h"
+#include "QAddressArea.hpp"
+
 class QCompleter;
 class QLineNumberArea;
 class QSyntaxStyle;
@@ -21,7 +24,7 @@ public:
      * @brief Constructor.
      * @param widget Pointer to parent widget.
      */
-    explicit QCodeEditor(QWidget* widget=nullptr);
+    explicit QCodeEditor(QWidget* widget = nullptr);
 
     // Disable copying
     QCodeEditor(const QCodeEditor&) = delete;
@@ -38,7 +41,7 @@ public:
      * @brief Method for setting highlighter.
      * @param highlighter Pointer to syntax highlighter.
      */
-    void setHighlighter(QStyleSyntaxHighlighter* highlighter);
+    void setHighlighter(QRiscvAsmHighlighter* highlighter);
 
     /**
      * @brief Method for setting syntax sty.e.
@@ -106,6 +109,8 @@ public:
      */
     QCompleter* completer() const;
 
+    void setAddressesVisible(bool visible);
+
 public Q_SLOTS:
 
     /**
@@ -118,9 +123,9 @@ public Q_SLOTS:
     /**
      * @brief Slot, that performs update of
      * internal editor viewport based on line
-     * number area width.
+     * number area and address area width.
      */
-    void updateLineNumberAreaWidth(int);
+    void updateViewportMargins(int);
 
     /**
      * @brief Slot, that performs update of some
@@ -128,6 +133,13 @@ public Q_SLOTS:
      * @param rect Area that has to be updated.
      */
     void updateLineNumberArea(const QRect& rect);
+
+    /**
+     * @brief Slot, that performs update of some
+     * part of address area.
+     * @param rect Area that has to be updated.
+     */
+    void updateAddressArea(const QRect& rect);
 
     /**
      * @brief Slot, that will proceed extra selection
@@ -183,10 +195,9 @@ protected:
      * It's required for setting this widget to set
      * completer.
      */
-    void focusInEvent(QFocusEvent *e) override;
+    void focusInEvent(QFocusEvent* e) override;
 
 private:
-
     /**
      * @brief Method for initializing document
      * layout handlers.
@@ -222,7 +233,7 @@ private:
      * @param e Pointer to key event.
      * @return Shall event be dropped.
      */
-    bool proceedCompleterBegin(QKeyEvent *e);
+    bool proceedCompleterBegin(QKeyEvent* e);
     void proceedCompleterEnd(QKeyEvent* e);
 
     /**
@@ -258,9 +269,10 @@ private:
      */
     int getIndentationSpaces();
 
-    QStyleSyntaxHighlighter* m_highlighter;
+    QRiscvAsmHighlighter* m_highlighter;
     QSyntaxStyle* m_syntaxStyle;
     QLineNumberArea* m_lineNumberArea;
+    QAddressArea* m_addressArea;
     QCompleter* m_completer;
 
     QFramedTextAttribute* m_framedAttribute;
@@ -269,5 +281,6 @@ private:
     bool m_autoParentheses;
     bool m_replaceTab;
     QString m_tabReplace;
+    int m_instructionSize;
+    bool m_addressesVisible = true;
 };
-
