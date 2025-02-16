@@ -58,7 +58,6 @@ void QAddressArea::paintEvent(QPaintEvent* event)
     auto bottom =
         top + static_cast<int>(m_codeEditParent->document()->documentLayout()->blockBoundingRect(block).height());
 
-    const auto currentLine = m_syntaxStyle->getFormat("CurrentLineNumber").foreground().color();
     const auto otherLines = m_syntaxStyle->getFormat("LineNumber").foreground().color();
 
     painter.setFont(m_codeEditParent->font());
@@ -68,8 +67,7 @@ void QAddressArea::paintEvent(QPaintEvent* event)
             const int instruction = block.userState();
             QString number = instruction == -1 ? "" : QString("%1").arg(instruction, 8, 16, QChar('0'));
 
-            const auto isCurrentLine = m_codeEditParent->textCursor().blockNumber() == blockNumber;
-            painter.setPen(isCurrentLine ? currentLine : otherLines);
+            painter.setPen(otherLines);
 
             painter.drawText(-5, top, sizeHint().width(), m_codeEditParent->fontMetrics().height(), Qt::AlignRight,
                              number);
