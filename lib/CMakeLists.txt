@@ -22,15 +22,6 @@ set(INCLUDE_FILES
         public/QLineNumberArea
         public/QStyleSyntaxHighlighter
         public/QSyntaxStyle
-        public/QCXXHighlighter
-        public/QGLSLHighlighter
-        public/QXMLHighlighter
-        public/QJSONHighlighter
-        public/QLuaHighlighter
-        public/QPythonHighlighter
-        public/QGLSLCompleter
-        public/QLuaCompleter
-        public/QPythonCompleter
 
         #public
         public/QHighlightRule.hpp
@@ -42,21 +33,6 @@ set(INCLUDE_FILES
         public/QLineNumberArea.hpp
         public/QStyleSyntaxHighlighter.hpp
         public/QSyntaxStyle.hpp
-
-        #public
-        #highliters
-        public/highlighters/QCXXHighlighter.hpp
-        public/highlighters/QGLSLHighlighter.hpp
-        public/highlighters/QXMLHighlighter.hpp
-        public/highlighters/QJSONHighlighter.hpp
-        public/highlighters/QLuaHighlighter.hpp
-        public/highlighters/QPythonHighlighter.hpp
-
-        #public
-        #completers
-        public/completers/QGLSLCompleter.hpp
-        public/completers/QLuaCompleter.hpp
-        public/completers/QPythonCompleter.hpp
 )
 
 set(SOURCE_FILES
@@ -68,21 +44,6 @@ set(SOURCE_FILES
         src/QStyleSyntaxHighlighter.cpp
         src/QLanguage.cpp
         src/QFramedTextAttribute.cpp
-
-        #src
-        #highlighters
-        src/highlighters/QCXXHighlighter.cpp
-        src/highlighters/QGLSLHighlighter.cpp
-        src/highlighters/QLuaHighlighter.cpp
-        src/highlighters/QPythonHighlighter.cpp
-        src/highlighters/QXMLHighlighter.cpp
-        src/highlighters/QJSONHighlighter.cpp
-
-        #src
-        #completers
-        src/completers/QGLSLCompleter.cpp
-        src/completers/QLuaCompleter.cpp
-        src/completers/QPythonCompleter.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC
@@ -95,13 +56,9 @@ target_include_directories(${PROJECT_NAME}
         PUBLIC
         $<INSTALL_INTERFACE:
         public
-        public/highlighters
-        public/completers
         >
         $<BUILD_INTERFACE:
         ${CMAKE_CURRENT_SOURCE_DIR}/public
-        ${CMAKE_CURRENT_SOURCE_DIR}/public/highlighters
-        ${CMAKE_CURRENT_SOURCE_DIR}/public/completers
         >
         PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src

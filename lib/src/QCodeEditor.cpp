@@ -1,5 +1,4 @@
 // K-Editor
-#include <QCXXHighlighter>
 #include <QCodeEditor>
 #include <QFramedTextAttribute>
 #include <QLineNumberArea>
